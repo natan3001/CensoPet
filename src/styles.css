@@ -1,0 +1,11 @@
+html{
+    background-image: url(./assets/fundo.jpg);
+	/* background: #0c3866; */
+	background-size: auto;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	background-attachment: fixed;
+}
+

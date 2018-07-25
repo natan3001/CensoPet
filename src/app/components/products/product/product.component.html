@@ -1,0 +1,626 @@
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="productService.selectedProduct.$key">
+    <ul class="form-style-1">
+        <li>
+            <label>Nome Completo <span class="required">*</span></label>
+            <input 
+              type="text" 
+              name="nome"
+              class="field-long" 
+              #nome="ngModel"
+              [(ngModel)]="productService.selectedProduct.nome"
+              placeholder="Nome Completo"/>
+        </li>
+
+
+        <li>
+            <label>CPF <span class="required">*</span></label>
+            <input 
+              type="number"
+              class="field-long" 
+              name="cpf"
+              #cpf="ngModel"
+              [(ngModel)]="productService.selectedProduct.cpf"
+              placeholder="Adicione seu CPF"
+              >
+        </li>
+        <li>
+            <label>RG <span class="required">*</span></label>
+            <input 
+              type="number"
+              class="field-long" 
+              name="rg"
+              #rg="ngModel"
+              [(ngModel)]="productService.selectedProduct.rg"
+              placeholder="Adicione seu RG:"
+              >
+        </li>
+        <li>
+            <label>Endereço <span class="required">*</span></label>
+            <input 
+              type="text"
+              name="endereco"
+              class="field-long" 
+              #endereco="ngModel"
+              [(ngModel)]="productService.selectedProduct.endereco"
+              placeholder="Endereço"
+              >
+        </li>
+
+           <li>
+              <label class="colunas">Numero</label>
+              <label class="colunas">Bairro</label>
+              
+              <input class="colunaentrada" type="number" placeholder="Nº"/>
+              <input class="colunaentrada" type="text"  placeholder="Bairro"/>
+          </li>
+        
+          <li>
+              <label>Complemento</label>
+              <input type="text" name="field3" class="field-long" />
+          </li>
+          
+          <li>
+              <label>Cidade <span class="required">*</span></label>
+              <input type="text" name="field3" class="field-long" />
+          </li>
+          
+          <li>
+              <label>Telefone <span class="required">*</span></label>
+              <input type="number" name="field3" class="field-long" />
+          </li>
+
+          <li>
+              <label>E-mail <span class="required">*</span></label>
+              <input type="email" name="field3" class="field-long" />
+          </li>
+
+
+        <li>
+            <label>Endereço</label>
+            <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+        </li>
+        
+        <li>
+            <label>Tipo de Casa</label>
+            <select name="TipoCasa" class="field-select" ng-model="productService.selectedProduct.tipoCasa">
+            <option value="Advertise">Casa de Madeira</option>
+            <option value="Partnership">Casa de Alvenaria</option>
+            </select>
+        </li>
+        <li>
+            <button class="btn btn-secondary" type="reset" (click)="onSubmit(productForm)">
+                <i class="fas fa-plus-circle"></i> Adicionar
+            </button>
+        </li>
+    </ul>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<div id="TCadastro">
+    <h1 align="center" class="page-header">Cadastro</h1>
+    </div>
+    <div class="form-container">
+      <form #dadosForm="ngForm" (ngSubmit)="onSubmit(dadosForm)" role="form">
+        <input id='step2' type='checkbox'>
+        <input id='step3' type='checkbox'>
+    
+        <div id="part1" class="form-group">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 align="center" class="panel-title">Dados Pessoais</h3>
+            </div>
+            
+            Nome:<input type="text" >
+            CPF:<input type="text" >
+            RG:<input type="text" >
+            
+            
+            Rua:<input type="text" >
+            Nº da Casa:<input type="text" >
+            Bairro:<input type="text" >
+            Complemento:<input type="text">
+            Cidade:<input type="text" >
+            
+    
+            
+            Telefone<input type="text" >
+            E-mail<input type="text" >
+            
+            <h3 align="center">Caracteristicas da Casa</h3>
+            Tipo de Moradia
+            <select class="form-control" name="Casa">
+              <option value="Selecione" selected>Selecione</option>
+              <option value="CasaPropria">Casa Prória</option>
+              <option value="CasaAlugada">Casa Alugada</option>
+              <option value="ApaProprio">Apartamento Próprio</option>
+              <option value="ApaAlugado">Apartamento Alugado</option>
+              <option value="SitioProprio">Sitio Próprio</option>
+              <option value="SitioAlugado">Sitio Alugado</option>
+            </select> 
+            Tipo de Casa
+            <select class="form-control" name="TipoCasa" >
+              <option value="SelecioneCasa" selected>Selecione</option>
+              <option value="CasaPropria">Casa de Madeira</option>
+              <option value="CasaAlugada">Casa de Alvenaria</option>
+            </select>
+            Tipo de Patio
+            <select class="form-control" name="TipoPatio">
+              <option value="Selecione" selected>Selecione</option>
+              <option value="Aberto">Aberto</option>
+              <option value="Fechado">Fechado</option>
+            </select>
+    
+            <h3 align="center">Caracteristicas dos Moradores</h3>
+            
+            Quantas Pessoas moram na casa<input type="number" class="form-control" name="nPessoas" min="1" max="15" placeholder="Nº de Pessoas">
+            Qual a estrtura? <textarea class="form-control" placeholder="Exemplo: Constituido de Pai, Mãe e dois irmãos"></textarea>
+            Tem membros da familia que estudam?<select class="form-control" name="qtdestudam">
+                <option value="Selecione" selected>Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Nao">Nao</option>
+              </select>
+            Se sim Quantos <input class="form-control" type="number" name="QuantosEstudam" min="0" max="15" placeholder="Quantos estudam?">
+            Qual a sua escolaridade<select class="form-control" name="escolaridade">
+                <option value="Selecione" selected>Selecione</option>
+                <option value="Fundamental"> Ensino Fundamental</option>
+                <option value="Medio">Ensino Médio</option>
+                <option value="Superior">Ensino Superior</option>
+              </select>
+            
+            Quantos membros da família trabalham? <input class="form-control" type="number" name="QuantosTrabalham" min="0" max="15" placeholder="Quantos trabalham?">
+            Quem Trabalha <input class="form-control" type="text" name="quemtrabalha" placeholder="Exemplo: Pai e Mãe">
+            Qual a renda total dos membros da família?<select class="form-control" name="menbrosfamilia" >
+                <option value="SelecioneCasa" selected>Selecione</option>
+                <option value="UmSalario">Um salário mínimo</option>
+                <option value="DoisSalarios">Dois salários mínimos</option>
+                <option value="TresOuMaisSalarios">Mais de Trés salários mínimos</option>
+              </select> 
+            Recebe algum auxílio do governo?<select class="form-control" name="auxilio">
+                <option value="Selecione" selected>Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Nao">Nao</option>
+              </select>
+    
+    
+            <div class="btn-group btn-group-lg" role="group" aria-label="...">
+              <label for='step2' id="continue-step2" class="continue">
+                <div class="btn btn-default btn-success btn-lg">Próximo</div>
+              </label>
+            </div>
+          </div>
+        </div>
+    
+        <div id="part2" class="form-group">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Caracteristicas</h3>
+            </div>
+            Tem Animais? <select name="Temanimais" class="form-control">
+              <option value="Selecione">Selecione</option>
+              <option value="sim">Sim</option>
+              <option value="Nao">Nao</option>
+            </select>
+            Quantos <input type="number" name="" class="form-control" max="100" min="1" placeholder="Quantos Animais você tem?">
+            Que animal tem?<br>
+            <select name="animal" class="form-control">
+              <option value="Selecione">Selecione</option>
+              <option value="Cachorro">Cachorro</option>
+              <option value="Gato">Gato</option>
+              <option value="CachorroeGato">Cachorro e Gato</option>
+              <option value="outroanimal">Outro</option>
+            </select>
+            Se outro qual animal é?
+            <input type="text" name="animaloutro" class="form-control" placeholder="qual animal?">
+            
+            Seu animal é<select name="animal" class="form-control">
+              <option value="Selecione">Selecione</option>
+              <option value="Adotado">Adotado</option>
+              <option value="Comprado">Comprado</option>
+            </select>
+            Quantos machos?<input type="number" name="Macho" class="form-control" max="15" min="0" placeholder="Quantos machos?">
+            Quantas fêmeas?<input type="number" name="Femea" class="form-control" max="15" min="0" placeholder="Quantas fêmeas?">
+      
+    
+            
+            <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+    
+              <label for='step2' id="back-step2" class="back">
+                <div class="btn btn-default btn-primary btn-lg" role="button">Back</div>
+              </label>
+    
+    
+              <label for='step3' id="continue-step3" class="continue">
+                <div class="btn btn-default btn-success btn-lg" role="button">Continue</div>
+              </label>
+    
+            </div>
+          </div>
+        </div>
+    
+        <div id="part3" class="form-group">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Part 3</h3>
+            </div>
+            <textarea id="message" class="form-control" placeholder="Message"></textarea>
+            <div class="btn-group btn-group-lg" role="group" aria-label="...">
+              <label for='step3' id="back-step3" class="back">
+                <div class="btn btn-default btn-primary btn-lg">Back</div>
+              </label>
+              <label class="continue">
+                <button style="margin-top: 10px;" class="btn btn-primary" type="submit">
+                  <i class="fas fa-plus-circle"></i> Adicionar
+                </button>
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="card mt-5">
+      <div class="card-body">
+        <form #dadosForm="ngForm" (ngSubmit)="onSubmit(dadosForm)">
+    
+          <div class="container">
+            <h1>Cadastro</h1>
+    
+    
+            <div class="row">
+              <input type="text" class="formControl1" name="nome" #nome="ngModel" [(ngModel)]="info.name" placeholder="nome">
+              <input type="text" class="formControl2" name="cpf" #cpf="ngModel" [(ngModel)]="info.cpf" placeholder="cpf">
+              <input type="text" class="formControl3" name="rg" #rg="ngModel" [(ngModel)]="info.rg" placeholder="rg">
+            </div>
+    
+            <div class="row">
+    
+              <input type="text" class="formControl1" name="rua" #rua="ngModel" [(ngModel)]="info.rua" placeholder="rua">
+              <input type="text" class="formControl3" name="numero" #numero="ngModel" [(ngModel)]="info.numero" placeholder="Numero da Casa">
+    
+            </div>
+            <div class="row">
+    
+              <input type="text" class="formControl1" name="bairro" #bairro="ngModel" [(ngModel)]="info.bairro" placeholder="Bairro">
+    
+              <input type="text" class="formControl3" name="complemento" #complemento="ngModel" [(ngModel)]="info.complemento" placeholder="Complemento">
+    
+              <input type="text" class="formControl2" name="cidade" #cidade="ngModel" [(ngModel)]="info.cidade" placeholder="cidade">
+    
+            </div>
+            <div class="row">
+    
+              <input type="text" class="formControl2" name="telefone" #telefone="ngModel" [(ngModel)]="info.telefone" placeholder="telefone">
+    
+              <input type="text" class="formControl2" name="email" #email="ngModel" [(ngModel)]="info.email" placeholder="E-mail">
+    
+            </div>
+            <button style="margin-top: 10px;" class="btn btn-primary" type="submit">
+              <i class="fas fa-plus-circle"></i> Adicionar
+            </button>
+          </div>
+    
+    
+          <div class="form-group">
+            
+            
+            <button class="btn btn-secondary" type="reset" (click)="resetForm(dadosForm)">
+              <i class="fas fa-sync-alt"></i> Cancelar
+            </button>
+          </div>
+    
+        </form>
+      </div>
+    </div>-->
+
+
+
+
+
+
+
+
+
+
+<!--<body>
+<form action="#"> 
+    <div>
+      <label class="desc" id="title1" for="Field1">Nome Completo:</label>
+      <div>
+        <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+      </div>
+    </div>
+      
+    <div>
+      <label class="desc" id="title3" for="Field3">
+          CPF:
+      </label>
+      <div>
+        <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+     </div>
+    </div>
+     
+    <div>
+        <label class="desc" id="title3" for="Field3">
+          RG:
+        </label>
+        <div>
+          <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+       </div>
+      </div>
+
+    <div>
+      <label class="desc" id="title3" for="Field3">
+        Endereço:
+      </label>
+    
+      <div>
+          <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+       </div>
+      </div>
+
+      <div>
+          <label class="desc" id="title3" for="Field3">
+            Nº:
+          </label>
+        
+          <div>
+              <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+           </div>
+          </div>
+      
+      <div>
+          <label class="desc" id="title3" for="Field3">
+            Bairro:
+          </label>
+        
+          <div>
+              <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+            </div>
+          </div>
+
+      <div>
+          <label class="desc" id="title3" for="Field3">
+            Complemento:
+          </label>
+        
+          <div>
+              <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+            </div>
+          </div>
+          
+      <div>
+          <label class="desc" id="title3" for="Field3">
+            Cidade:
+          </label>
+        
+          <div>
+              <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+            </div>
+          </div>
+
+      <div>
+          <label class="desc" id="title3" for="Field3">
+            Telefone:
+          </label>
+        
+          <div>
+              <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+            </div>
+          </div>
+
+      <div>
+          <label class="desc" id="title3" for="Field3">
+            E-mail:
+          </label>
+        
+          <div>
+              <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+            </div>
+          </div>
+    <div>
+      <fieldset>
+      
+        <legend id="title5" class="desc">
+          Select a Choice
+        </legend>
+        
+        <div>
+          <input id="radioDefault_5" name="Field5" type="hidden" value="">
+          <div>
+            <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
+            <label class="choice" for="Field5_0">First Choice</label>
+          </div>
+          <div>
+            <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+            <label class="choice" for="Field5_1">Second Choice</label>
+          </div>
+          <div>
+            <input id="Field5_2" name="Field5" type="radio" value="Third Choice" tabindex="7">
+            <label class="choice" for="Field5_2">Third Choice</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    
+    <div>
+      
+        <legend id="title6" class="desc">
+          Check All That Apply
+        </legend>
+        <div>
+        <div>
+          <input id="Field6" name="Field6" type="checkbox" value="First Choice" tabindex="8">
+          <label class="choice" for="Field6">First Choice</label>
+        </div>
+        <div>
+          <input id="Field7" name="Field7" type="checkbox" value="Second Choice" tabindex="9">
+          <label class="choice" for="Field7">Second Choice</label>
+        </div>
+        <div>
+          <input id="Field8" name="Field8" type="checkbox" value="Third Choice" tabindex="10">
+          <label class="choice" for="Field8">Third Choice</label>
+        
+        </div>
+      
+    </div>
+    <br>
+    <div>
+      <label class="desc" id="title106" for="Field106">
+        Select a Choice
+      </label>
+      <div>
+      <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+        <option value="First Choice">First Choice</option>
+        <option value="Second Choice">Second Choice</option>
+        <option value="Third Choice">Third Choice</option>
+      </select>
+      </div>
+    </div>
+    <br>
+    <div>
+      <div>
+        <input align="center" id="saveForm" name="saveForm" type="submit" value="Submit">
+      </div>
+    </div>
+ 
+
+  
+-----------------------------------------------------------------------------------------------------
+
+<body>
+
+    <div class="header">
+      <h1 align="center">CensoPet 2018</h1>
+    </div>
+    
+    <div class="row">
+    <div>
+        <div >
+            <div >
+                <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+                    
+                   TO UPDATE
+          
+                    <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="productService.selectedProduct.$key">
+                    
+                    <br>
+                    <div >
+                      <input 
+                        type="text"
+                        
+                        name="nome"
+                        #nome="ngModel"
+                        [(ngModel)]="productService.selectedProduct.nome"
+                        placeholder="Nome Completo"
+                        >
+                    </div>
+                    <div >
+                        <input 
+                          type="number"
+                        
+                          name="cpf"
+                          #cpf="ngModel"
+                          [(ngModel)]="productService.selectedProduct.cpf"
+                          placeholder="Adicione seu CPF"
+                          >
+                      </div>
+                    <div >
+                      <input 
+                        type="number"
+                        name="rg"
+                        #rg="ngModel"
+                        [(ngModel)]="productService.selectedProduct.rg"
+                        placeholder="Adicione seu RG:"
+                        >
+                    </div>
+                    <div >
+                      <div >
+                        <div >
+                        </div>
+                        <input 
+                          type="text"
+                         
+                          name="endereco"
+                          #endereco="ngModel"
+                          [(ngModel)]="productService.selectedProduct.endereco"
+                          placeholder="Endereço"
+                          >
+                      </div>
+                    </div>
+          
+                    <div>
+                      <button type="submit">
+                          <i class="fas fa-plus-circle"></i> Finalizar
+                      </button>
+                    </div>
+                  </form>
+            </div>
+          </div>
+
+
+    </div>
+    
+    <div class="col-3 right">
+      
+    </div>
+    
+    </div>
+    
+    <div class="footer">
+      <p></p>
+    </div>
+    
+    </body>
+
+-->
+
+
